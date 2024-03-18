@@ -62,28 +62,26 @@ class Consumer(ScrapyCommand):
 
     def add_options(self, parser):
         ScrapyCommand.add_options(self, parser)
-        parser.add_option(
+        parser.add_argument(
             "-q",
             "--queue",
-            type="str",
+            type=self.queue_option_callback,
             dest="queue_name",
             help="Queue name to consume messages",
-            action="callback",
-            callback=self.queue_option_callback,
         )
-        parser.add_option(
+        parser.add_argument(
             "-m",
             "--mode",
-            type="choice",
+            type=str,
             choices=self.action_modes,
             default="action",
             dest="mode",
             help="Command run mode: action for one time execution and exit or worker",
         )
-        parser.add_option(
+        parser.add_argument(
             "-p",
             "--prefetch_count",
-            type="int",
+            type=int,
             default=None,
             dest="prefetch_count",
             help="RabbitMQ consumer prefetch count setting",
