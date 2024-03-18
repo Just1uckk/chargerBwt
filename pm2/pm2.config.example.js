@@ -18,7 +18,7 @@ const spiders = [
     interpreter: PYTHON_INTERPRETER,
     instances: 1,
     autorestart: true,
-    cron_restart: "* * * * *",
+    cron_restart: "0 * * * *",
   }
 ];
 
